@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>助成金リスト</title>
+<style>
+:root {
+  --bg: #f5f6fa;
+  --card: #fff;
+  --border: #e0e3eb;
+  --text: #1a1a2e;
+  --text-secondary: #555;
+  --accent: #1B3A5C;
+  --cat-national: #DBEEF4;
+  --cat-national-text: #1B3A5C;
+  --cat-local: #E8F5E9;
+  --cat-local-text: #1B5E20;
+  --cat-private: #FFF3E0;
+  --cat-private-text: #E65100;
+  --cat-overseas: #EDE7F6;
+  --cat-overseas-text: #4A148C;
+  --deadline-urgent: #C62828;
+  --deadline-soon: #E65100;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: var(--bg); color: var(--text); line-height: 1.5; }
+
+header { background: var(--accent); color: #fff; padding: 16px 24px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
+header h1 { font-size: 18px; font-weight: 700; }
+header .meta { font-size: 13px; opacity: 0.8; }
+
+.controls { background: var(--card); border-bottom: 1px solid var(--border); padding: 12px 24px; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.controls select, .controls input { font-size: 13px; padding: 6px 10px; border: 1px solid var(--border); border-radius: 6px; background: #fff; }
+.controls select { min-width: 120px; }
+.controls input[type="text"] { min-width: 200px; }
+.controls .spacer { flex: 1; }
+.btn { font-size: 13px; padding: 6px 14px; border: 1px solid var(--border); border-radius: 6px; background: var(--card); cursor: pointer; white-space: nowrap; }
+.btn:hover { background: #f0f0f0; }
+.btn-accent { background: var(--accent); color: #fff; border-color: var(--accent); }
+.btn-accent:hover { opacity: 0.9; }
+
+.stats { padding: 8px 24px; font-size: 13px; color: var(--text-secondary); background: var(--card); border-bottom: 1px solid var(--border); }
+
+.table-wrap { overflow-x: auto; padding: 0 16px 24px; }
+table { width: 100%; border-collapse: collapse; margin-top: 12px; font-size: 13px; }
+th { background: var(--accent); color: #fff; text-align: left; padding: 10px 12px; position: sticky; top: 0; cursor: pointer; white-space: nowrap; user-select: none; }
+th:hover { opacity: 0.9; }
+th .sort-arrow { margin-left: 4px; font-size: 10px; }
+td { padding: 10px 12px; border-bottom: 1px solid var(--border); vertical-align: top; }
+tr:nth-child(even) { background: #fafbfd; }
+tr:hover { background: #f0f3f8; }
+
+.cat-badge { display: inline-block; padding: 2px 8px; border-radius: 10px; font-size: 11px; font-weight: 700; white-space: nowrap; }
+.cat-national { background: var(--cat-national); color: var(--cat-national-text); }
+.cat-local { background: var(--cat-local); color: var(--cat-local-text); }
+.cat-private { background: var(--cat-private); color: var(--cat-private-text); }
+.cat-overseas { background: var(--cat-overseas); color: var(--cat-overseas-text); }
+
+.deadline-urgent { color: var(--deadline-urgent); font-weight: 700; }
+.deadline-soon { color: var(--deadline-soon); font-weight: 600; }
+
+a { color: #0066CC; text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+.name-cell { font-weight: 600; color: var(--accent); max-width: 300px; }
+.org-cell { max-width: 200px; }
+.amount-cell { white-space: nowrap; }
+.summary-cell { max-width: 350px; font-size: 12px; color: var(--text-secondary); }
+
+@media (max-width: 768px) {
+  header { padding: 12px 16px; }
+  .controls { padding: 8px 16px; }
+  .table-wrap { padding: 0 8px 16px; }
+  td, th { padding: 8px 6px; font-size: 12px; }
+  .controls input[type="text"] { min-width: 140px; }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>助成金リスト</h1>
+  <div class="meta" id="meta">読み込み中...</div>
+</header>
+
+<div class="controls">
+  <select id="filterCategory">
+    <option value="">全ての団体区分</option>
+    <option value="国・省庁">国・省庁</option>
+    <option value="地方自治体">地方自治体</option>
+    <option value="民間">民間</option>
+    <option value="海外">海外</option>
+  </select>
+  <select id="filterType">
+    <option value="">全てのタイプ</option>
+    <option value="grant">補助金・助成金</option>
+    <option value="challenge">チャレンジ</option>
+    <option value="award">アワード</option>
+    <option value="pitch">ピッチ</option>
+    <option value="accelerator">アクセラレーター</option>
+    <option value="certification">認証</option>
+  </select>
+  <select id="filterDeadline">
+    <option value="">全ての締切</option>
+    <option value="7">7日以内</option>
+    <option value="30">30日以内</option>
+    <option value="90">90日以内</option>
+  </select>
+  <input type="text" id="searchText" placeholder="キーワード検索...">
+  <div class="spacer"></div>
+  <button class="btn" onclick="resetFilters()">リセット</button>
+  <button class="btn btn-accent" onclick="downloadCSV()">CSV</button>
+</div>
+
+<div class="stats" id="stats"></div>
+
+<div class="table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th data-sort="name">助成金名 <span class="sort-arrow"></span></th>
+        <th data-sort="organization">助成団体 <span class="sort-arrow"></span></th>
+        <th data-sort="organization_category">区分 <span class="sort-arrow"></span></th>
+        <th data-sort="amount">金額 <span class="sort-arrow"></span></th>
+        <th data-sort="deadline">締切 <span class="sort-arrow"></span></th>
+        <th data-sort="eligibility_summary">応募条件</th>
+        <th>URL</th>
+      </tr>
+    </thead>
+    <tbody id="tbody"></tbody>
+  </table>
+</div>
+
+<script>
+let grants = [];
+let sortKey = 'deadline';
+let sortAsc = true;
+
+const CAT_CLASS = {
+  '国・省庁': 'cat-national',
+  '地方自治体': 'cat-local',
+  '民間': 'cat-private',
+  '海外': 'cat-overseas',
+};
+
+async function init() {
+  try {
+    const res = await fetch('data/grants.json');
+    const data = await res.json();
+    grants = data.grants || [];
+    const d = data.date || '不明';
+    document.getElementById('meta').textContent = `最終更新: ${d} / ${grants.length}件`;
+    render();
+  } catch (e) {
+    document.getElementById('meta').textContent = 'データの読み込みに失敗しました';
+  }
+}
+
+function getFiltered() {
+  const cat = document.getElementById('filterCategory').value;
+  const type = document.getElementById('filterType').value;
+  const dlDays = document.getElementById('filterDeadline').value;
+  const search = document.getElementById('searchText').value.toLowerCase();
+  const now = new Date(); now.setHours(0,0,0,0);
+
+  return grants.filter(g => {
+    if (cat && g.organization_category !== cat) return false;
+    if (type && g.opportunity_type !== type) return false;
+    if (dlDays) {
+      const dl = parseDate(g.deadline);
+      if (!dl) return false;
+      const diff = (dl - now) / 86400000;
+      if (diff < 0 || diff > Number(dlDays)) return false;
+    }
+    if (search) {
+      const hay = [g.name, g.organization, g.keywords, g.eligibility_summary, g.notes || ''].join(' ').toLowerCase();
+      if (!hay.includes(search)) return false;
+    }
+    return true;
+  });
+}
+
+function parseDate(s) {
+  if (!s || !/^\d{4}-\d{2}-\d{2}/.test(s)) return null;
+  return new Date(s.substring(0, 10));
+}
+
+function getSorted(list) {
+  const copy = [...list];
+  copy.sort((a, b) => {
+    let va = a[sortKey] || '', vb = b[sortKey] || '';
+    if (sortKey === 'deadline') {
+      const da = parseDate(va), db = parseDate(vb);
+      va = da ? da.getTime() : 9999999999999;
+      vb = db ? db.getTime() : 9999999999999;
+    }
+    if (va < vb) return sortAsc ? -1 : 1;
+    if (va > vb) return sortAsc ? 1 : -1;
+    return 0;
+  });
+  return copy;
+}
+
+function deadlineClass(dl) {
+  const d = parseDate(dl);
+  if (!d) return '';
+  const diff = (d - new Date()) / 86400000;
+  if (diff < 0) return 'deadline-urgent';
+  if (diff <= 14) return 'deadline-urgent';
+  if (diff <= 30) return 'deadline-soon';
+  return '';
+}
+
+function escHtml(s) {
+  const d = document.createElement('div');
+  d.textContent = s || '';
+  return d.innerHTML;
+}
+
+function render() {
+  const filtered = getSorted(getFiltered());
+  const tbody = document.getElementById('tbody');
+
+  // stats
+  const cats = {};
+  filtered.forEach(g => { const c = g.organization_category || '不明'; cats[c] = (cats[c]||0)+1; });
+  const statsStr = Object.entries(cats).map(([k,v]) => `${k}: ${v}`).join(' / ');
+  document.getElementById('stats').textContent = `表示: ${filtered.length}件 (${statsStr})`;
+
+  if (filtered.length === 0) {
+    tbody.innerHTML = '<tr><td colspan="7" style="text-align:center;padding:40px;color:#999;">該当する助成金がありません</td></tr>';
+    return;
+  }
+
+  tbody.innerHTML = filtered.map(g => {
+    const catCls = CAT_CLASS[g.organization_category] || '';
+    const dlCls = deadlineClass(g.deadline);
+    const dlDisplay = g.deadline && /^\d{4}-\d{2}-\d{2}/.test(g.deadline) ? g.deadline : (g.deadline || '要確認');
+    const urlDisplay = g.url ? `<a href="${escHtml(g.url)}" target="_blank" rel="noopener">Link</a>` : '';
+    return `<tr>
+      <td class="name-cell">${escHtml(g.name)}</td>
+      <td class="org-cell">${escHtml(g.organization)}</td>
+      <td><span class="cat-badge ${catCls}">${escHtml(g.organization_category || '')}</span></td>
+      <td class="amount-cell">${escHtml(g.amount)}</td>
+      <td class="${dlCls}">${escHtml(dlDisplay)}</td>
+      <td class="summary-cell">${escHtml(g.eligibility_summary)}</td>
+      <td>${urlDisplay}</td>
+    </tr>`;
+  }).join('');
+}
+
+// sort
+document.querySelectorAll('th[data-sort]').forEach(th => {
+  th.addEventListener('click', () => {
+    const key = th.dataset.sort;
+    if (sortKey === key) { sortAsc = !sortAsc; }
+    else { sortKey = key; sortAsc = true; }
+    document.querySelectorAll('.sort-arrow').forEach(s => s.textContent = '');
+    th.querySelector('.sort-arrow').textContent = sortAsc ? ' \u25B2' : ' \u25BC';
+    render();
+  });
+});
+
+// filter events
+['filterCategory','filterType','filterDeadline'].forEach(id => {
+  document.getElementById(id).addEventListener('change', render);
+});
+document.getElementById('searchText').addEventListener('input', render);
+
+function resetFilters() {
+  document.getElementById('filterCategory').value = '';
+  document.getElementById('filterType').value = '';
+  document.getElementById('filterDeadline').value = '';
+  document.getElementById('searchText').value = '';
+  render();
+}
+
+function downloadCSV() {
+  const filtered = getSorted(getFiltered());
+  const header = ['ID','助成金名','助成団体','団体区分','キーワード','金額','助成期間','応募条件','締切日','URL','タイプ','confidence','備考'];
+  const rows = filtered.map(g => [
+    g.id, g.name, g.organization, g.organization_category, g.keywords,
+    g.amount, g.duration, g.eligibility_summary, g.deadline, g.url,
+    g.opportunity_type, g.confidence, g.notes
+  ].map(v => `"${String(v||'').replace(/"/g,'""')}"`).join(','));
+
+  const bom = '\uFEFF';
+  const csv = bom + [header.join(','), ...rows].join('\n');
+  const blob = new Blob([csv], { type: 'text/csv;charset=utf-8' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = `grants-${new Date().toISOString().slice(0,10)}.csv`;
+  a.click();
+}
+
+init();
+</script>
+</body>
+</html>

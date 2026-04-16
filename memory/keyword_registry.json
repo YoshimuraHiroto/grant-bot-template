@@ -1,0 +1,74 @@
+{
+  "active_keywords": [
+    {
+      "keyword": "防災",
+      "hit_rate": 0.13,
+      "positive_feedback_rate": 0.0,
+      "search_count": 16
+    },
+    {
+      "keyword": "減災",
+      "hit_rate": 0.01,
+      "positive_feedback_rate": 0.0,
+      "search_count": 16
+    },
+    {
+      "keyword": "衛星",
+      "hit_rate": 0.125,
+      "positive_feedback_rate": 0.0,
+      "search_count": 16,
+      "notes": "衛星通信・衛星打ち上げ関連は除外対象（ex_0003）。衛星データ利活用・リモートセンシングは対象。"
+    },
+    {
+      "keyword": "リモートセンシング",
+      "hit_rate": 0.036,
+      "positive_feedback_rate": 0.0,
+      "search_count": 16
+    },
+    {
+      "keyword": "AI",
+      "hit_rate": 0.378,
+      "positive_feedback_rate": 0.0,
+      "search_count": 16
+    },
+    {
+      "keyword": "機械学習",
+      "hit_rate": 0.009,
+      "positive_feedback_rate": 0.0,
+      "search_count": 16
+    },
+    {
+      "keyword": "カーボンクレジット",
+      "hit_rate": 0.042,
+      "positive_feedback_rate": 0.0,
+      "search_count": 16
+    },
+    {
+      "keyword": "生物多様性",
+      "hit_rate": 0.036,
+      "positive_feedback_rate": 0.0,
+      "search_count": 16
+    },
+    {
+      "keyword": "ブルーカーボン",
+      "hit_rate": 0.025,
+      "positive_feedback_rate": 0.0,
+      "search_count": 16
+    },
+    {
+      "keyword": "宇宙",
+      "hit_rate": 0.074,
+      "positive_feedback_rate": 0.0,
+      "search_count": 16
+    },
+    {
+      "keyword": "水資源",
+      "hit_rate": 0.0,
+      "positive_feedback_rate": 0.0,
+      "search_count": 16
+    }
+  ],
+  "suggested_keywords": [],
+  "retired_keywords": [],
+  "last_updated": "2026-04-14"
+}

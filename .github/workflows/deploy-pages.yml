@@ -1,0 +1,18 @@
+name: Deploy to Pages
+on:
+  push:
+    paths: ['docs/**']
+    branches: [main]
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: cpina/github-action-push-to-another-repository@v1
+        with:
+          source-directory: docs
+          destination-github-username: ${{ github.repository_owner }}
+          destination-repository-name: grant-pages
+          target-branch: main
+        env:
+          API_TOKEN_GITHUB: ${{ secrets.PAGES_DEPLOY_TOKEN }}

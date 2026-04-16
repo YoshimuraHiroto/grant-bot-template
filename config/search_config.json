@@ -1,0 +1,187 @@
+{
+  "themes": [
+    {
+      "id": "disaster_prevention",
+      "name_ja": "防災",
+      "keywords_ja": ["防災", "減災", "災害対策", "レジリエンス", "BCP", "防災DX", "災害情報", "火山防災", "国土強靱化"],
+      "keywords_en": ["disaster prevention", "disaster risk reduction", "resilience"]
+    },
+    {
+      "id": "satellite",
+      "name_ja": "衛星",
+      "keywords_ja": ["衛星", "リモートセンシング", "宇宙", "地球観測", "SAR", "衛星データ", "JAXA", "InSAR"],
+      "keywords_en": ["satellite", "remote sensing", "earth observation", "SAR", "InSAR"]
+    },
+    {
+      "id": "ai_data",
+      "name_ja": "AI・データ解析",
+      "keywords_ja": ["AI", "人工知能", "機械学習", "データ解析", "DX", "ビッグデータ", "深層学習", "気候AI"],
+      "keywords_en": ["artificial intelligence", "machine learning", "data analytics", "deep learning", "climate AI"]
+    },
+    {
+      "id": "carbon_environment",
+      "name_ja": "脱炭素・環境",
+      "keywords_ja": ["カーボンクレジット", "脱炭素", "ブルーカーボン", "生物多様性", "気候変動", "GX"],
+      "keywords_en": ["carbon credit", "blue carbon", "biodiversity", "climate change", "decarbonization"]
+    }
+  ],
+  "opportunity_types": {
+    "description": "補助金・助成金だけでなく、以下の類型も検索対象とする。各クエリテンプレートで網羅的にカバーすること。",
+    "types_ja": ["補助金", "助成金", "委託費", "交付金", "ピッチコンテスト", "ビジネスプランコンテスト", "アクセラレーター", "アワード", "チャレンジ", "実証事業", "データコンペ"],
+    "types_en": ["grant", "subsidy", "award", "challenge", "accelerator", "pitch competition", "innovation program", "data challenge"]
+  },
+  "applicant_type": "企業（株式会社等）",
+  "portals": [
+    {
+      "name": "JST 募集情報",
+      "url": "https://www.jst.go.jp/bosyu/bosyu.html",
+      "type": "government",
+      "group": "portal_gov"
+    },
+    {
+      "name": "NEDO 公募",
+      "url": "https://www.nedo.go.jp/koubo/index.html",
+      "type": "government",
+      "group": "portal_gov"
+    },
+    {
+      "name": "AMED 公募",
+      "url": "https://www.amed.go.jp/koubo/index.html",
+      "type": "government",
+      "group": "portal_gov"
+    },
+    {
+      "name": "総務省 SCOPE",
+      "url": "https://www.soumu.go.jp/main_sosiki/joho_tsusin/scope/",
+      "type": "government",
+      "group": "portal_gov"
+    },
+    {
+      "name": "経産省 補助金",
+      "url": "https://www.meti.go.jp/information/publicoffer/kobo.html",
+      "type": "government",
+      "group": "portal_gov"
+    },
+    {
+      "name": "環境省 公募",
+      "url": "https://www.env.go.jp/kanbo/kobo.html",
+      "type": "government",
+      "group": "portal_gov"
+    },
+    {
+      "name": "内閣府 SIP",
+      "url": "https://www8.cao.go.jp/cstp/gaiyo/sip/index.html",
+      "type": "government",
+      "group": "portal_gov"
+    },
+    {
+      "name": "e-Rad 公募情報",
+      "url": "https://www.e-rad.go.jp/",
+      "type": "aggregator",
+      "group": "portal_aggregator"
+    },
+    {
+      "name": "CANPAN FIELDS 助成情報",
+      "url": "https://fields.canpan.info/grant/",
+      "type": "aggregator",
+      "group": "portal_aggregator"
+    },
+    {
+      "name": "助成財団センター",
+      "url": "https://www.jfc.or.jp/",
+      "type": "aggregator",
+      "group": "portal_aggregator"
+    },
+    {
+      "name": "jGrants 補助金申請",
+      "url": "https://www.jgrants-portal.go.jp/",
+      "type": "aggregator",
+      "group": "portal_aggregator"
+    },
+    {
+      "name": "ミラサポplus",
+      "url": "https://mirasapo-plus.go.jp/",
+      "type": "aggregator",
+      "group": "portal_aggregator"
+    },
+    {
+      "name": "J-Net21 支援情報ヘッドライン",
+      "url": "https://j-net21.smrj.go.jp/snavi/support",
+      "type": "local_gov",
+      "group": "portal_local",
+      "note": "中小企業向け。都道府県別の補助金・助成金を横断検索可能"
+    },
+    {
+      "name": "補助金ポータル",
+      "url": "https://hojyokin-portal.jp/",
+      "type": "local_gov",
+      "group": "portal_local",
+      "note": "国・自治体の補助金を横断検索"
+    },
+    {
+      "name": "スマート補助金",
+      "url": "https://www.smarthojokin.jp/",
+      "type": "local_gov",
+      "group": "portal_local",
+      "note": "補助金・助成金の検索・マッチング"
+    }
+  ],
+  "prefectures": {
+    "hokkaido_tohoku": ["北海道", "青森県", "岩手県", "宮城県", "秋田県", "山形県", "福島県"],
+    "kanto": ["茨城県", "栃木県", "群馬県", "埼玉県", "千葉県", "東京都", "神奈川県"],
+    "chubu": ["新潟県", "富山県", "石川県", "福井県", "山梨県", "長野県", "岐阜県", "静岡県", "愛知県"],
+    "kinki": ["三重県", "滋賀県", "京都府", "大阪府", "兵庫県", "奈良県", "和歌山県"],
+    "chugoku_shikoku": ["鳥取県", "島根県", "岡山県", "広島県", "山口県", "徳島県", "香川県", "愛媛県", "高知県"],
+    "kyushu_okinawa": ["福岡県", "佐賀県", "長崎県", "熊本県", "大分県", "宮崎県", "鹿児島県", "沖縄県"]
+  },
+  "ministries": {
+    "ministry_group1": [
+      {"name": "経済産業省", "keywords": "DX, AI, ものづくり, SBIR, 事業再構築, IT導入, 省エネ, 宇宙産業"},
+      {"name": "総務省", "keywords": "ICT, 通信, 衛星通信, データ連携, 地域IoT, スマートシティ"},
+      {"name": "国土交通省", "keywords": "防災, 減災, 国土強靭化, インフラ, スマートシティ, 建設DX"},
+      {"name": "環境省", "keywords": "カーボンクレジット, 生物多様性, ブルーカーボン, 脱炭素, 気候変動適応, 環境AI"},
+      {"name": "内閣府", "keywords": "SIP, ムーンショット, PRISM, 宇宙, 防災, スタートアップ"}
+    ],
+    "ministry_group2": [
+      {"name": "文部科学省", "keywords": "宇宙, JAXA, 衛星, 研究開発, データ駆動型研究"},
+      {"name": "農林水産省", "keywords": "スマート農業, AI, リモートセンシング, 生物多様性, ブルーカーボン"},
+      {"name": "防衛省", "keywords": "安全保障, 防衛装備, デュアルユース, 衛星, サイバー"},
+      {"name": "デジタル庁", "keywords": "DX, データ連携, AI, デジタル社会"},
+      {"name": "復興庁", "keywords": "復興, 防災, 被災地支援"}
+    ]
+  },
+  "local_query_templates": [
+    "{prefecture} {keyword} 補助金 助成金 企業 {year}",
+    "{prefecture} {keyword} ピッチ コンテスト アワード 募集 {year}",
+    "{prefecture} {keyword} アクセラレーター スタートアップ 支援 {year}",
+    "{prefecture} {keyword} 実証事業 委託 公募 {year}"
+  ],
+  "ministry_query_templates": [
+    "{ministry} {keyword} 補助金 助成金 公募 {year}",
+    "{ministry} {keyword} チャレンジ コンテスト アワード {year}",
+    "{ministry} {keyword} 実証事業 委託費 公募 {year}"
+  ],
+  "web_queries_template": [
+    "{keyword} 助成金 募集 {year}",
+    "{keyword} 補助金 公募 {year}",
+    "{keyword} 研究開発 助成 企業",
+    "民間財団 {keyword} 研究助成 募集中",
+    "{keyword} 事業 補助金 中小企業",
+    "{keyword} ピッチコンテスト 募集 {year}",
+    "{keyword} ビジネスコンテスト アワード {year}",
+    "{keyword} アクセラレーター スタートアップ {year}",
+    "{keyword} チャレンジ データコンペ 募集 {year}",
+    "{keyword} 実証事業 委託 公募 {year}",
+    "{keyword} research grant call {year}",
+    "{keyword} innovation challenge award {year}",
+    "{keyword} accelerator startup program {year}",
+    "SBIR {keyword} {year}"
+  ],
+  "exclusion_patterns": [
+    "個人向け奨学金",
+    "留学助成",
+    "大学・研究機関限定",
+    "科研費",
+    "学振特別研究員"
+  ]
+}
