@@ -83,7 +83,7 @@
     },
     {
       "id": "sdg_social_innovation",
-      "name_ja": "SDGs・気候変動ソリューション（広域）",
+      "name_ja": "社会課題解決・サステナビリティ（広域）",
       "keywords_ja": [
         "SDGs",
         "社会課題解決",
@@ -113,7 +113,7 @@
         "sustainable development",
         "social implementation"
       ],
-      "notes": "ソリューションのテーマを限定せず、広範に気候変動・社会課題に貢献する研究開発・アワード・ピッチを探す。ME-Lab Japan の衛星・AI・気候コア技術が適用可能な分野を網羅的に探索する。"
+      "notes": "ソリューションを限定しない広範な研究開発・アワード・ピッチを探す。企業プロファイル（company_profile.json）のコア技術が適用可能な分野を網羅的に探索する。"
     }
   ],
   "opportunity_types": {
@@ -142,7 +142,6 @@
       "data challenge"
     ]
   },
-  "applicant_type": "企業（株式会社等）",
   "portals": [
     {
       "name": "JST 募集情報",
@@ -391,83 +390,75 @@
     "科研費",
     "学振特別研究員"
   ],
-  "known_broad_programs": {
-    "description": "ソリューションテーマを限定しない広範な研究開発・助成プログラム。毎回の検索で必ず公募状況を確認する",
-    "programs": [
+  "broad_program_categories": {
+    "description": "具体名ではなく、探すべき助成金のカテゴリを示す。Routineは各カテゴリを WebSearch で展開して最新プログラムを発見する",
+    "categories": [
       {
-        "name": "JST RISTEX SOLVE for SDGs",
-        "url": "https://www.jst.go.jp/ristex/proposal/",
-        "note": "社会課題解決型研究開発。大学等との共同提案必須"
+        "id": "strategic_rd",
+        "label": "戦略的研究開発プログラム",
+        "query_hints": [
+          "戦略的創造研究 公募",
+          "CREST さきがけ",
+          "未来社会創造事業",
+          "研究開発プログラム 企業参加"
+        ]
       },
       {
-        "name": "JST CREST",
-        "url": "https://www.jst.go.jp/kisoken/crest/",
-        "note": "戦略的創造研究推進事業。チーム型研究"
+        "id": "social_innovation",
+        "label": "社会課題解決・共創型プログラム",
+        "query_hints": [
+          "社会課題解決 研究開発",
+          "共創 産学連携 公募",
+          "SOLVE for SDGs",
+          "社会実装"
+        ]
       },
       {
-        "name": "JST さきがけ",
-        "url": "https://www.jst.go.jp/kisoken/presto/",
-        "note": "戦略的創造研究推進事業。個人型研究"
+        "id": "moonshot",
+        "label": "ムーンショット型・超長期研究",
+        "query_hints": [
+          "ムーンショット 公募",
+          "大規模長期研究 公募",
+          "破壊的イノベーション 助成"
+        ]
       },
       {
-        "name": "JST 未来社会創造事業",
-        "url": "https://www.jst.go.jp/mirai/",
-        "note": "社会的課題を見据えた研究開発"
+        "id": "environmental_research",
+        "label": "環境研究総合推進費・環境関連公的助成",
+        "query_hints": [
+          "環境研究 公募",
+          "環境総合推進費",
+          "地球環境基金"
+        ]
       },
       {
-        "name": "NEDO ムーンショット（全目標）",
-        "url": "https://www.nedo.go.jp/activities/moonshot.html",
-        "note": "特に目標8(気象制御)・目標10(脱炭素)が関連"
+        "id": "private_foundations",
+        "label": "民間財団の研究助成",
+        "query_hints": [
+          "民間財団 研究助成 {theme}",
+          "企業財団 助成 {theme}",
+          "foundation grant research {theme}"
+        ]
       },
       {
-        "name": "環境研究総合推進費",
-        "url": "https://www.erca.go.jp/suishinhi/koubo/",
-        "note": "環境省。環境問題解決に貢献する研究開発"
+        "id": "sustainability_awards",
+        "label": "サステナビリティ・ESGアワード/ピッチ",
+        "query_hints": [
+          "サステナビリティアワード 企業",
+          "SDGsアワード",
+          "ESG pitch competition",
+          "climate tech challenge"
+        ]
       },
       {
-        "name": "戦略的プロアクティブ研究",
-        "url": "",
-        "note": "環境省・文科省 等"
-      },
-      {
-        "name": "住友財団 環境研究助成",
-        "url": "https://www.sumitomo.or.jp/",
-        "note": "民間財団。気候変動・生態系研究"
-      },
-      {
-        "name": "トヨタ財団 研究助成",
-        "url": "https://www.toyotafound.or.jp/",
-        "note": "社会的課題解決型研究"
-      },
-      {
-        "name": "三菱財団 自然科学研究助成",
-        "url": "https://www.mitsubishi-zaidan.jp/",
-        "note": "環境・エネルギー分野含む"
-      },
-      {
-        "name": "日産財団 環境研究助成",
-        "url": "https://www.nissan-zaidan.or.jp/",
-        "note": "環境・技術分野"
-      },
-      {
-        "name": "旭硝子財団（ブループラネット賞）",
-        "url": "https://www.af-info.or.jp/",
-        "note": "地球環境問題解決"
-      },
-      {
-        "name": "大川情報通信基金",
-        "url": "https://www.okawa-foundation.or.jp/",
-        "note": "情報通信・AI研究"
-      },
-      {
-        "name": "Horizon Europe Climate Calls",
-        "url": "https://ec.europa.eu/info/funding-tenders/",
-        "note": "EUの気候関連プログラム"
-      },
-      {
-        "name": "SDGsアワード（国連・外務省）",
-        "url": "https://www.mofa.go.jp/",
-        "note": "SDGs推進表彰"
+        "id": "international_rd",
+        "label": "国際研究開発プログラム",
+        "query_hints": [
+          "Horizon Europe call",
+          "EU framework programme",
+          "UN innovation grant",
+          "XPRIZE Earthshot"
+        ]
       }
     ]
   }
