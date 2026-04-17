@@ -1,0 +1,602 @@
+{
+  "date": "2026-04-17",
+  "removed": [
+    {
+      "id": "GR-20260416-003",
+      "name": "Blue Carbon Plus (BC+)",
+      "reason": "gate3_no_money",
+      "amount": "Variable"
+    },
+    {
+      "id": "GR-20260416-004",
+      "name": "UNDP Climate Catalysts Programme",
+      "reason": "gate3_accelerator_no_support",
+      "amount": "Fellowship program"
+    },
+    {
+      "id": "GR-20260416-005",
+      "name": "Amazon Devices Climate Tech Accelerator",
+      "reason": "gate3_accelerator_no_support",
+      "amount": "Accelerator support"
+    },
+    {
+      "id": "GR-20260416-007",
+      "name": "NASA SBIR/STTR Program 2026",
+      "reason": "gate3_no_money",
+      "amount": "Variable by phase"
+    },
+    {
+      "id": "GR-20260416-009",
+      "name": "ESA Sustainable Wetlands Call",
+      "reason": "gate3_no_money",
+      "amount": "Variable"
+    },
+    {
+      "id": "GR-20260416-010",
+      "name": "ROSES-2026 (Research Opportunities in Space and Earth Science)",
+      "reason": "gate3_no_money",
+      "amount": "Variable"
+    },
+    {
+      "id": "GR-20260416-012",
+      "name": "NEDO GENIAC 2026年度第4期",
+      "reason": "gate2_expired",
+      "deadline": "2026-02-28"
+    },
+    {
+      "id": "GR-20260416-013",
+      "name": "課題解決に向けた先進的な衛星リモートセンシングデータ利用モデル実証プロジェクト",
+      "reason": "gate3_no_money",
+      "amount": "実証費用支援"
+    },
+    {
+      "id": "GR-20260416-014",
+      "name": "JAXA宇宙戦略基金 衛星データ利用システム実装加速化事業",
+      "reason": "gate3_no_money",
+      "amount": "詳細は公募要領参照"
+    },
+    {
+      "id": "GR-20260416-015",
+      "name": "日本版SBIR（中小企業イノベーション創出推進事業）",
+      "reason": "gate2_expired",
+      "deadline": "2026-02-24説明会実施"
+    },
+    {
+      "id": "GR-20260416-016",
+      "name": "成長型中小企業等研究開発支援事業（令和8年度）",
+      "reason": "gate2_expired",
+      "deadline": "2026-02-17公募開始"
+    },
+    {
+      "id": "GR-20260416-017",
+      "name": "IVS2026 LAUNCHPAD",
+      "reason": "gate3_no_money",
+      "amount": "投資機会・事業提携"
+    },
+    {
+      "id": "GR-20260416-019",
+      "name": "AIsmiley AI PRODUCTS AWARD 2026",
+      "reason": "gate2_expired",
+      "deadline": "2026-01-27発表済"
+    },
+    {
+      "id": "GR-20260416-021",
+      "name": "日本生命財団 環境問題研究助成",
+      "reason": "gate2_expired",
+      "deadline": "2026-03-24"
+    },
+    {
+      "id": "GR-20260416-022",
+      "name": "地球環境基金 2026年度助成",
+      "reason": "gate2_expired",
+      "deadline": "2025-11-17"
+    },
+    {
+      "id": "GR-20260416-024",
+      "name": "防災教育チャレンジプラン 2026",
+      "reason": "gate3_no_money",
+      "amount": "活動支援（金額詳細不明）"
+    },
+    {
+      "id": "GR-20260416-025",
+      "name": "高専防災減災コンテスト",
+      "reason": "gate3_no_money",
+      "amount": "表彰・PR効果"
+    },
+    {
+      "id": "GR-20260416-026",
+      "name": "アーバンデータチャレンジ",
+      "reason": "gate3_no_money",
+      "amount": "表彰・活動支援"
+    },
+    {
+      "id": "GR-20260416-027",
+      "name": "パナソニック アクセラレーター by Electric Works Company",
+      "reason": "gate2_expired",
+      "deadline": "2025-07-17開始（継続中）"
+    },
+    {
+      "id": "GR-20260416-028",
+      "name": "MUFG Digital アクセラレータ",
+      "reason": "gate3_accelerator_no_support",
+      "amount": "事業提携・投資機会"
+    },
+    {
+      "id": "GR-20260416-029",
+      "name": "NEDO インフラ状態モニタリングシステム技術開発",
+      "reason": "gate3_no_money",
+      "amount": "委託費・補助金"
+    },
+    {
+      "id": "GR-20260416-033",
+      "name": "衛星データ利用環境整備・ソリューション開発支援事業",
+      "reason": "gate3_no_money",
+      "amount": "事業規模による"
+    },
+    {
+      "id": "GR-20260416-034",
+      "name": "GENIAC-PRIZE（生成AIの社会実装プロジェクト）",
+      "reason": "gate2_expired",
+      "deadline": "2026-02-28"
+    },
+    {
+      "id": "GR-20260416-035",
+      "name": "AIエッジコンテスト",
+      "reason": "gate3_no_money",
+      "amount": "賞金・支援"
+    },
+    {
+      "id": "GR-20260416-036",
+      "name": "地域社会DX推進パッケージ事業",
+      "reason": "gate2_expired",
+      "deadline": "2026-03-26"
+    },
+    {
+      "id": "GR-20260416-037",
+      "name": "データセンター等の地方分散によるデジタルインフラ強靱化事業",
+      "reason": "gate3_no_money",
+      "amount": "大規模投資支援"
+    },
+    {
+      "id": "GR-20260416-038",
+      "name": "防災・減災対策等強化事業推進費",
+      "reason": "gate3_no_money",
+      "amount": "事業規模による"
+    },
+    {
+      "id": "GR-20260416-040",
+      "name": "ムーンショット型研究開発制度",
+      "reason": "gate2_expired",
+      "deadline": "2026-01-07"
+    },
+    {
+      "id": "GR-20260416-043",
+      "name": "A-STEP実装支援（返済型）2026年度",
+      "reason": "gate3_no_money",
+      "amount": "要確認"
+    },
+    {
+      "id": "GR-20260416-044",
+      "name": "大学発新産業創出基金事業 早暁プログラム第3期ステージ1",
+      "reason": "gate3_accelerator_no_support",
+      "amount": "要確認"
+    },
+    {
+      "id": "GR-20260416-045",
+      "name": "AIロボット・フィジカルAIを見据えたマルチモーダル基盤モデル開発事業",
+      "reason": "gate3_no_money",
+      "amount": "要確認"
+    },
+    {
+      "id": "GR-20260416-046",
+      "name": "Jブルークレジット制度",
+      "reason": "gate3_no_money",
+      "amount": "要確認"
+    },
+    {
+      "id": "GR-20260416-047",
+      "name": "ムーンショット目標8：気象制御・極端風水害対策",
+      "reason": "gate3_no_money",
+      "amount": "要確認"
+    },
+    {
+      "id": "GR-20260416-048",
+      "name": "ムーンショット目標3：AI・ロボット共進化",
+      "reason": "gate3_no_money",
+      "amount": "要確認"
+    },
+    {
+      "id": "GR-20260416-050",
+      "name": "省力化投資補助金（一般型）",
+      "reason": "gate3_no_money",
+      "amount": "要確認"
+    },
+    {
+      "id": "GR-20260416-051",
+      "name": "小規模事業者持続化補助金（一般型・創業型）",
+      "reason": "gate3_no_money",
+      "amount": "要確認"
+    },
+    {
+      "id": "GR-20260416-052",
+      "name": "新事業進出補助金",
+      "reason": "gate3_no_money",
+      "amount": "要確認"
+    },
+    {
+      "id": "GR-20260416-053",
+      "name": "SDGsの達成に向けた共創的研究開発プログラム",
+      "reason": "gate3_no_money",
+      "amount": "要確認"
+    },
+    {
+      "id": "GR-20260416-054",
+      "name": "令和8年度 AIデバイス関連製品開発支援事業",
+      "reason": "gate3_no_money",
+      "amount": "詳細未記載"
+    },
+    {
+      "id": "GR-20260416-055",
+      "name": "Fukuoka Growth Next High Growth Program",
+      "reason": "gate3_accelerator_no_support",
+      "amount": "-"
+    },
+    {
+      "id": "GR-20260416-056",
+      "name": "先進的宇宙関連機器開発加速化支援事業",
+      "reason": "gate3_no_money",
+      "amount": "詳細未記載"
+    },
+    {
+      "id": "GR-20260416-057",
+      "name": "令和8年度宇宙ビジネス創出支援事業費補助金",
+      "reason": "gate3_no_money",
+      "amount": "詳細未記載"
+    },
+    {
+      "id": "GR-20260416-059",
+      "name": "くまもとDX推進コンソーシアム",
+      "reason": "gate3_accelerator_no_support",
+      "amount": "-"
+    },
+    {
+      "id": "GR-20260416-061",
+      "name": "佐賀県産業スマート化センター支援制度",
+      "reason": "gate3_no_money",
+      "amount": "詳細未記載"
+    },
+    {
+      "id": "GR-20260416-062",
+      "name": "令和7年度産業DX推進事業費補助金",
+      "reason": "gate2_expired",
+      "deadline": "2025-06-30"
+    },
+    {
+      "id": "GR-20260416-063",
+      "name": "デジタル化・AI導入補助金2026",
+      "reason": "gate2_expired",
+      "deadline": "2026-03-30"
+    },
+    {
+      "id": "GR-20260416-064",
+      "name": "デジタルチャレンジ推進事業",
+      "reason": "gate3_no_money",
+      "amount": "不明"
+    },
+    {
+      "id": "GR-20260416-065",
+      "name": "北海道の宇宙関連産業振興",
+      "reason": "gate3_no_money",
+      "amount": "不明"
+    },
+    {
+      "id": "GR-20260416-066",
+      "name": "HOKKAIDO学生アプリコンテスト2026",
+      "reason": "gate3_no_money",
+      "amount": "不明"
+    },
+    {
+      "id": "GR-20260416-067",
+      "name": "Google Cloud 第5回生成AI事例アワード",
+      "reason": "gate2_expired",
+      "deadline": "2026-01-23"
+    },
+    {
+      "id": "GR-20260416-068",
+      "name": "青森県中小企業・小規模事業者向け補助金",
+      "reason": "gate3_no_money",
+      "amount": "不明"
+    },
+    {
+      "id": "GR-20260416-069",
+      "name": "岩手県地方創生起業支援金",
+      "reason": "gate3_no_money",
+      "amount": "不明"
+    },
+    {
+      "id": "GR-20260416-070",
+      "name": "岩手県復興・地域活性化関連補助金",
+      "reason": "gate3_no_money",
+      "amount": "不明"
+    },
+    {
+      "id": "GR-20260416-071",
+      "name": "先進的デジタル技術実証事業補助金",
+      "reason": "gate3_no_money",
+      "amount": "不明"
+    },
+    {
+      "id": "GR-20260416-072",
+      "name": "宮城県中小企業等デジタル化支援事業",
+      "reason": "gate3_no_money",
+      "amount": "不明"
+    },
+    {
+      "id": "GR-20260416-073",
+      "name": "Miyagi Pitch Contest 2026",
+      "reason": "gate3_no_money",
+      "amount": "不明"
+    },
+    {
+      "id": "GR-20260416-076",
+      "name": "山形県中小企業まるっとサポート補助金",
+      "reason": "gate3_no_money",
+      "amount": "不明"
+    },
+    {
+      "id": "GR-20260416-077",
+      "name": "山形市企業DX推進事業費補助金",
+      "reason": "gate3_no_money",
+      "amount": "不明"
+    },
+    {
+      "id": "GR-20260416-078",
+      "name": "福島イノベーション・コースト構想関連事業",
+      "reason": "gate3_accelerator_no_support",
+      "amount": "不明"
+    },
+    {
+      "id": "GR-20260416-079",
+      "name": "地域復興実用化開発等促進事業費補助金",
+      "reason": "gate2_expired",
+      "deadline": "2026-02-06"
+    },
+    {
+      "id": "GR-20260416-080",
+      "name": "福島イノベーション創出プラットフォーム事業",
+      "reason": "gate3_accelerator_no_support",
+      "amount": "不明"
+    },
+    {
+      "id": "GR-20260416-081",
+      "name": "J-Startup TOHOKU Regional Supporters",
+      "reason": "gate3_accelerator_no_support",
+      "amount": "不明"
+    },
+    {
+      "id": "GR-20260416-085",
+      "name": "とっとり宇宙産業ネットワーク",
+      "reason": "gate3_accelerator_no_support",
+      "amount": "不明"
+    },
+    {
+      "id": "GR-20260416-086",
+      "name": "ぼうさいこくたい2026",
+      "reason": "gate3_no_money",
+      "amount": "不明"
+    },
+    {
+      "id": "GR-20260416-087",
+      "name": "島根県産業デジタル推進事業",
+      "reason": "gate3_no_money",
+      "amount": "要問い合わせ"
+    },
+    {
+      "id": "GR-20260416-089",
+      "name": "AI for Scienceに不可欠な計算資源の戦略的増強",
+      "reason": "gate3_no_money",
+      "amount": "金額未公開"
+    },
+    {
+      "id": "GR-20260416-090",
+      "name": "JAXAイノベーションチャレンジ 2026（第6回）",
+      "reason": "gate3_no_money",
+      "amount": "チャレンジ型"
+    },
+    {
+      "id": "GR-20260416-091",
+      "name": "種子島ロケットコンテスト2026",
+      "reason": "gate2_expired",
+      "deadline": "2026-03-09"
+    },
+    {
+      "id": "GR-20260416-092",
+      "name": "日本スタートアップ大賞2026（農業スタートアップ賞）",
+      "reason": "gate2_expired",
+      "deadline": "2026-01-23"
+    },
+    {
+      "id": "GR-20260416-093",
+      "name": "スマート農業・農業支援サービス事業加速化総合対策事業",
+      "reason": "gate3_no_money",
+      "amount": "金額未公開"
+    },
+    {
+      "id": "GR-20260416-094",
+      "name": "農林水産業におけるロボット技術安全性確保策検討",
+      "reason": "gate2_expired",
+      "deadline": "2026-03-04"
+    },
+    {
+      "id": "GR-20260416-095",
+      "name": "イナカムビジネスコンテスト（令和7年度）",
+      "reason": "gate3_no_money",
+      "amount": "コンテスト型"
+    },
+    {
+      "id": "GR-20260416-096",
+      "name": "フードテックビジネスコンテスト（令和7年度）",
+      "reason": "gate2_expired",
+      "deadline": "2026-02-01"
+    },
+    {
+      "id": "GR-20260416-098",
+      "name": "防衛省サイバーコンテスト2026",
+      "reason": "gate2_expired",
+      "deadline": "2026-01-11"
+    },
+    {
+      "id": "GR-20260416-099",
+      "name": "日本DX大賞2026",
+      "reason": "gate3_no_money",
+      "amount": "表彰型"
+    },
+    {
+      "id": "GR-20260416-100",
+      "name": "地域復興実用化開発等促進事業費補助金",
+      "reason": "gate2_expired",
+      "deadline": "2026-02-01"
+    },
+    {
+      "id": "GR-20260416-102",
+      "name": "ミライノピッチ",
+      "reason": "gate3_no_money",
+      "amount": "未明示"
+    },
+    {
+      "id": "GR-20260416-103",
+      "name": "スマートシティ推進スタートアップ支援補助金",
+      "reason": "gate2_expired",
+      "deadline": "2026-01-31"
+    },
+    {
+      "id": "GR-20260416-104",
+      "name": "京都スタートアップエコシステム支援",
+      "reason": "gate3_accelerator_no_support",
+      "amount": "未明示"
+    },
+    {
+      "id": "GR-20260416-105",
+      "name": "Plug and Play Winter 2026 Batch",
+      "reason": "gate2_expired",
+      "deadline": "2025-12-01"
+    },
+    {
+      "id": "GR-20260416-106",
+      "name": "三重県エネルギー価格等高騰対応生産性向上・業態転換支援補助金",
+      "reason": "gate2_expired",
+      "deadline": "2026-02-27"
+    },
+    {
+      "id": "GR-20260416-107",
+      "name": "滋賀県近未来技術等社会実装推進事業補助金",
+      "reason": "gate3_no_money",
+      "amount": "未明示"
+    },
+    {
+      "id": "GR-20260416-109",
+      "name": "奈良県スタートアップ支援事業",
+      "reason": "gate3_accelerator_no_support",
+      "amount": "未明示"
+    },
+    {
+      "id": "GR-20260416-110",
+      "name": "奈良市起業・創業支援",
+      "reason": "gate3_accelerator_no_support",
+      "amount": "未明示"
+    },
+    {
+      "id": "GR-20260416-111",
+      "name": "やまなし火山防災イノベーションピッチコンテスト",
+      "reason": "gate2_expired",
+      "deadline": "2025年5月23日（2025年版、2026年版未発表）"
+    },
+    {
+      "id": "GR-20260416-112",
+      "name": "あいちスタートアップ創業支援事業費補助金（起業支援金）",
+      "reason": "gate2_expired",
+      "deadline": "2025年6月30日（2025年版、2026年版要確認）"
+    },
+    {
+      "id": "GR-20260416-113",
+      "name": "STATION Ai重点領域プログラム（Manufacturing Acceleration Program）",
+      "reason": "gate2_expired",
+      "deadline": "2025年7月4日"
+    },
+    {
+      "id": "GR-20260416-114",
+      "name": "生成AI等チャレンジ事業（自動車産業）",
+      "reason": "gate2_expired",
+      "deadline": "2025年6月20日"
+    },
+    {
+      "id": "GR-20260416-115",
+      "name": "DX先端技術活用サービス等開発支援事業",
+      "reason": "gate2_expired",
+      "deadline": "2025年5月23日（2025年版、2026年版要確認）"
+    },
+    {
+      "id": "GR-20260416-116",
+      "name": "ICT産業立地助成金",
+      "reason": "gate3_no_money",
+      "amount": "未記載"
+    },
+    {
+      "id": "GR-20260416-117",
+      "name": "AI等先端技術を活用した受入環境高度化支援事業",
+      "reason": "gate3_no_money",
+      "amount": "詳細要確認"
+    },
+    {
+      "id": "GR-20260416-119",
+      "name": "TOKYO STARTUP GATEWAY",
+      "reason": "gate3_no_money",
+      "amount": "詳細要確認"
+    },
+    {
+      "id": "GR-20260416-120",
+      "name": "Techstars Tokyo",
+      "reason": "gate3_accelerator_no_support",
+      "amount": "投資付きアクセラレーター（金額詳細要確認）"
+    },
+    {
+      "id": "GR-20260416-121",
+      "name": "かながわ・スタートアップ・アクセラレーション・プログラム",
+      "reason": "gate3_accelerator_no_support",
+      "amount": "詳細要確認"
+    },
+    {
+      "id": "GR-20260416-123",
+      "name": "埼玉県オーダーメイド型DX推進支援事業",
+      "reason": "gate2_expired",
+      "deadline": "2026-04-09"
+    },
+    {
+      "id": "GR-20260416-124",
+      "name": "千葉県地域防災力充実・強化補助金",
+      "reason": "gate3_no_money",
+      "amount": "詳細要確認"
+    },
+    {
+      "id": "GR-20260416-127",
+      "name": "ぐんまDX技術革新補助金",
+      "reason": "gate3_no_money",
+      "amount": "詳細要確認"
+    },
+    {
+      "id": "GR-20260416-128",
+      "name": "地域社会DX推進パッケージ事業",
+      "reason": "gate3_no_money",
+      "amount": "詳細要確認"
+    }
+  ],
+  "stats": {
+    "gate2_expired": 29,
+    "gate3_no_money": 54,
+    "gate3_accelerator_no_support": 15,
+    "gate4_low_info": 0,
+    "gate4_short_eligibility": 0,
+    "normalized_deadline": 8,
+    "near_deadline_warning": 1
+  }
+}
