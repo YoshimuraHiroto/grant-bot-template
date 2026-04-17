@@ -114,6 +114,42 @@
         "social implementation"
       ],
       "notes": "ソリューションを限定しない広範な研究開発・アワード・ピッチを探す。企業プロファイル（company_profile.json）のコア技術が適用可能な分野を網羅的に探索する。"
+    },
+    {
+      "id": "global_south_international",
+      "name_ja": "グローバルサウス・新興国社会課題解決",
+      "keywords_ja": [
+        "グローバルサウス",
+        "新興国",
+        "開発途上国",
+        "途上国",
+        "国際協力",
+        "JICA",
+        "ODA",
+        "国際共創",
+        "アジア・アフリカ",
+        "東南アジア",
+        "アフリカ",
+        "持続可能な開発",
+        "途上国支援",
+        "インフラ整備",
+        "技術移転",
+        "海外展開",
+        "新興国市場"
+      ],
+      "keywords_en": [
+        "Global South",
+        "emerging markets",
+        "developing countries",
+        "international cooperation",
+        "ODA",
+        "international development",
+        "South-South cooperation",
+        "technology transfer",
+        "Asia Africa",
+        "emerging economies"
+      ],
+      "notes": "新興国・途上国の社会課題解決に貢献する助成金。ソリューションテーマは問わず、応募主体のコア技術が適用可能なら対象とする。"
     }
   ],
   "opportunity_types": {
@@ -381,7 +417,11 @@
     "{keyword} サステナビリティアワード 企業",
     "{keyword} SDGsアワード ESG {year}",
     "{keyword} climate tech grant award {year}",
-    "{keyword} sustainability innovation call {year}"
+    "{keyword} sustainability innovation call {year}",
+    "{keyword} グローバルサウス 共創 {year}",
+    "{keyword} 新興国 社会課題 助成金 {year}",
+    "{keyword} 途上国 民間連携 事業 {year}",
+    "{keyword} international development grant {year}"
   ],
   "exclusion_patterns": [
     "個人向け奨学金",
@@ -458,6 +498,20 @@
           "EU framework programme",
           "UN innovation grant",
           "XPRIZE Earthshot"
+        ]
+      },
+      {
+        "id": "global_south_social",
+        "label": "グローバルサウス・新興国社会課題解決型プログラム",
+        "query_hints": [
+          "グローバルサウス 共創 事業 公募",
+          "新興国 社会課題 補助金",
+          "JICA 民間連携 公募",
+          "ODA 技術協力 企業",
+          "途上国 インフラ 事業 補助金",
+          "Global South innovation grant",
+          "developing countries innovation programme",
+          "international cooperation grant {year}"
         ]
       }
     ]
