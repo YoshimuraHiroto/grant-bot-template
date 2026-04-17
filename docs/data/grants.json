@@ -174,7 +174,7 @@
       "url": "https://fund.jaxa.jp/",
       "opportunity_type": "grant",
       "confidence": 0.7,
-      "notes": "衛星コンステレーション構築、高頻度打上げ対応技術等6テーマを実施",
+      "notes": "[応募対象] 衛星データ利用システム実装加速化事業等、EO/データ利活用テーマに限定。ロケット開発・衛星打ち上げ・衛星通信テーマは対象外。 衛星コンステレーション構築、高頻度打上げ対応技術等6テーマを実施",
       "id": "GR-20260417-010",
       "organization_category": "国・省庁"
     },
@@ -296,7 +296,7 @@
       "url": "https://www.mod.go.jp/atla/funding.html",
       "opportunity_type": "grant",
       "confidence": 0.95,
-      "notes": "SBIR制度指定補助金、デュアルユース技術取り込み方策として新設、令和7年度応募340件",
+      "notes": "[応募対象] SAR/InSAR等の地球観測センシング基礎研究は対象。衛星打ち上げ・通信システムは対象外。デュアルユース基礎研究。 SBIR制度指定補助金、デュアルユース技術取り込み方策として新設、令和7年度応募340件",
       "id": "GR-20260417-018",
       "organization_category": "国・省庁"
     },
@@ -328,7 +328,7 @@
       "prefecture": "東京都",
       "opportunity_type": "grant",
       "confidence": 0.9,
-      "notes": "衛星データ活用に最適。ME-Lab Japanの衛星データ解析実績と高い親和性",
+      "notes": "[応募対象] リモートセンシング・衛星データ利活用のソリューション開発に限定。衛星通信・測位サービス機器開発は対象外。ME-Lab Japanの衛星データ解析実績と高い親和性。 衛星データ活用に最適。ME-Lab Japanの衛星データ解析実績と高い親和性",
       "id": "GR-20260417-020",
       "organization_category": "地方自治体"
     },
@@ -344,7 +344,7 @@
       "prefecture": "茨城県",
       "opportunity_type": "grant",
       "confidence": 0.8,
-      "notes": "[応募可能性] 県外企業も応募可。ただし茨城県内に活動拠点設置、事業後1年以上継続が必要。 JAXA筑波宇宙センターとの連携機会。新製品開発や販路開拓支援",
+      "notes": "[応募対象] 衛星データ解析・EOビジネスに限定。衛星打ち上げ・通信系は対象外。 [応募可能性] 県外企業も応募可。ただし茨城県内に活動拠点設置、事業後1年以上継続が必要。 JAXA筑波宇宙センターとの連携機会。新製品開発や販路開拓支援",
       "id": "GR-20260417-021",
       "organization_category": "地方自治体"
     },
@@ -360,7 +360,7 @@
       "url": "https://www.nasa.gov/sbir_sttr/nasa-sbir-sttr-program-program-year-2026-information-hub/",
       "opportunity_type": "grant",
       "confidence": 0.85,
-      "notes": "2026年よりBAA方式に再構築。付録(Appendix)が順次公開され、それぞれ独自の締切を持つ。Phase II終了後 CCRPP で商用化支援あり。日本企業は米国小企業のサブコントラクターとして参加可能。",
+      "notes": "[応募対象] Earth Science / Earth Observation関連 subtopic のみ。Rocket / Launch vehicle / Satellite communications subtopic は対象外。日本企業は米国小企業のサブコントラクターとして参加可能。 2026年よりBAA方式に再構築。付録(Appendix)が順次公開され、それぞれ独自の締切を持つ。Phase II終了後 CCRPP で商用化支援あり。日本企業は米国小企業のサブコントラクターとして参加可能。",
       "id": "GR-20260417-022"
     },
     {
