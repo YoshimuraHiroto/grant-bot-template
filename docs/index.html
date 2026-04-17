@@ -22,6 +22,7 @@
   --cat-overseas-text: #4A148C;
   --deadline-urgent: #C62828;
   --deadline-soon: #E65100;
+  --overridden: #FFF9C4;
 }
 * { box-sizing: border-box; margin: 0; padding: 0; }
 body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: var(--bg); color: var(--text); line-height: 1.5; }
@@ -39,23 +40,32 @@ header .meta { font-size: 13px; opacity: 0.8; }
 .btn:hover { background: #f0f0f0; }
 .btn-accent { background: var(--accent); color: #fff; border-color: var(--accent); }
 .btn-accent:hover { opacity: 0.9; }
+.btn-sm { font-size: 14px; padding: 4px 8px; border: 1px solid transparent; background: transparent; cursor: pointer; border-radius: 4px; }
+.btn-sm:hover { background: #e8ecf2; }
+.btn-danger { color: #C62828; }
+.btn-danger:hover { background: #ffebee; }
 
-.stats { padding: 8px 24px; font-size: 13px; color: var(--text-secondary); background: var(--card); border-bottom: 1px solid var(--border); }
+.stats { padding: 8px 24px; font-size: 13px; color: var(--text-secondary); background: var(--card); border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }
 
 .table-wrap { overflow-x: auto; padding: 0 16px 24px; }
 table { width: 100%; border-collapse: collapse; margin-top: 12px; font-size: 13px; }
 th { background: var(--accent); color: #fff; text-align: left; padding: 10px 12px; position: sticky; top: 0; cursor: pointer; white-space: nowrap; user-select: none; }
+th.no-sort { cursor: default; }
 th:hover { opacity: 0.9; }
 th .sort-arrow { margin-left: 4px; font-size: 10px; }
 td { padding: 10px 12px; border-bottom: 1px solid var(--border); vertical-align: top; }
 tr:nth-child(even) { background: #fafbfd; }
 tr:hover { background: #f0f3f8; }
+tr.has-override { background: var(--overridden) !important; }
+tr.has-override:hover { background: #fff59d !important; }
 
 .cat-badge { display: inline-block; padding: 2px 8px; border-radius: 10px; font-size: 11px; font-weight: 700; white-space: nowrap; }
 .cat-national { background: var(--cat-national); color: var(--cat-national-text); }
 .cat-local { background: var(--cat-local); color: var(--cat-local-text); }
 .cat-private { background: var(--cat-private); color: var(--cat-private-text); }
 .cat-overseas { background: var(--cat-overseas); color: var(--cat-overseas-text); }
+
+.override-mark { display: inline-block; font-size: 10px; padding: 1px 5px; border-radius: 4px; background: #FDD835; color: #000; margin-left: 4px; font-weight: 700; }
 
 .deadline-urgent { color: var(--deadline-urgent); font-weight: 700; }
 .deadline-soon { color: var(--deadline-soon); font-weight: 600; }
@@ -67,6 +77,26 @@ a:hover { text-decoration: underline; }
 .org-cell { max-width: 200px; }
 .amount-cell { white-space: nowrap; }
 .summary-cell { max-width: 350px; font-size: 12px; color: var(--text-secondary); }
+.actions-cell { white-space: nowrap; }
+
+/* Modal */
+.modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.5); display: none; align-items: center; justify-content: center; z-index: 1000; padding: 20px; }
+.modal-overlay.open { display: flex; }
+.modal { background: #fff; border-radius: 8px; max-width: 600px; width: 100%; max-height: 90vh; overflow-y: auto; box-shadow: 0 10px 40px rgba(0,0,0,0.2); }
+.modal-header { padding: 16px 20px; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
+.modal-header h2 { font-size: 16px; }
+.modal-header .close { background: none; border: none; font-size: 24px; cursor: pointer; color: #999; }
+.modal-body { padding: 20px; }
+.modal-footer { padding: 12px 20px; border-top: 1px solid var(--border); display: flex; justify-content: flex-end; gap: 8px; flex-wrap: wrap; }
+
+.form-row { margin-bottom: 12px; }
+.form-row label { display: block; font-size: 12px; font-weight: 600; color: var(--text-secondary); margin-bottom: 4px; }
+.form-row input, .form-row select, .form-row textarea { width: 100%; font-size: 13px; padding: 6px 10px; border: 1px solid var(--border); border-radius: 6px; font-family: inherit; }
+.form-row textarea { min-height: 70px; resize: vertical; }
+
+.info-box { background: #E3F2FD; border-left: 3px solid #1976D2; padding: 10px 12px; margin-bottom: 12px; font-size: 13px; border-radius: 4px; }
+.info-box code { background: rgba(0,0,0,0.05); padding: 1px 4px; border-radius: 3px; font-size: 12px; }
+.info-box pre { background: #f5f5f5; padding: 8px; border-radius: 4px; font-size: 12px; overflow-x: auto; margin-top: 6px; white-space: pre-wrap; }
 
 @media (max-width: 768px) {
   header { padding: 12px 16px; }
@@ -113,7 +143,10 @@ a:hover { text-decoration: underline; }
   <button class="btn btn-accent" onclick="downloadCSV()">CSV</button>
 </div>
 
-<div class="stats" id="stats"></div>
+<div class="stats">
+  <div id="stats"></div>
+  <div id="hiddenPanel"></div>
+</div>
 
 <div class="table-wrap">
   <table>
@@ -125,17 +158,91 @@ a:hover { text-decoration: underline; }
         <th data-sort="amount">金額 <span class="sort-arrow"></span></th>
         <th data-sort="deadline">締切 <span class="sort-arrow"></span></th>
         <th data-sort="eligibility_summary">応募条件</th>
-        <th>URL</th>
+        <th class="no-sort">URL</th>
+        <th class="no-sort">操作</th>
       </tr>
     </thead>
     <tbody id="tbody"></tbody>
   </table>
 </div>
 
+<!-- Edit Modal -->
+<div class="modal-overlay" id="editModal">
+  <div class="modal">
+    <div class="modal-header">
+      <h2>✏️ 助成金情報の修正</h2>
+      <button class="close" onclick="closeModal('editModal')">&times;</button>
+    </div>
+    <div class="modal-body" id="editModalBody"></div>
+    <div class="modal-footer">
+      <button class="btn" onclick="closeModal('editModal')">キャンセル</button>
+      <button class="btn btn-accent" onclick="submitEdit()">GitHubで確定</button>
+    </div>
+  </div>
+</div>
+
+<!-- Hide Modal -->
+<div class="modal-overlay" id="hideModal">
+  <div class="modal">
+    <div class="modal-header">
+      <h2>👁 非表示にする</h2>
+      <button class="close" onclick="closeModal('hideModal')">&times;</button>
+    </div>
+    <div class="modal-body" id="hideModalBody"></div>
+    <div class="modal-footer">
+      <button class="btn" onclick="closeModal('hideModal')">キャンセル</button>
+      <button class="btn" onclick="hideSelf()">自分だけ非表示</button>
+      <button class="btn btn-accent" onclick="hideAll()">全員から非表示</button>
+    </div>
+  </div>
+</div>
+
+<!-- Report Modal -->
+<div class="modal-overlay" id="reportModal">
+  <div class="modal">
+    <div class="modal-header">
+      <h2>🚩 Slackで報告</h2>
+      <button class="close" onclick="closeModal('reportModal')">&times;</button>
+    </div>
+    <div class="modal-body" id="reportModalBody"></div>
+    <div class="modal-footer">
+      <button class="btn" onclick="closeModal('reportModal')">キャンセル</button>
+      <button class="btn btn-accent" onclick="copyReport()">Slack投稿文をコピー</button>
+    </div>
+  </div>
+</div>
+
+<!-- Instructions Modal (after clipboard copy) -->
+<div class="modal-overlay" id="instructModal">
+  <div class="modal">
+    <div class="modal-header">
+      <h2>✓ コピーしました</h2>
+      <button class="close" onclick="closeModal('instructModal')">&times;</button>
+    </div>
+    <div class="modal-body" id="instructModalBody"></div>
+    <div class="modal-footer">
+      <button class="btn btn-accent" onclick="closeModal('instructModal')">OK</button>
+    </div>
+  </div>
+</div>
+
 <script>
-let grants = [];
+let allGrants = [];        // merged grants (grants.json + overrides)
+let rawGrants = [];        // original grants.json
+let overrides = {};        // overrides.json content
 let sortKey = 'deadline';
 let sortAsc = true;
+let currentEditGrant = null;
+let currentHideGrant = null;
+let currentReportGrant = null;
+let pendingOverride = null; // snippet to be copied
+
+const REPO_OWNER = 'YoshimuraHiroto';
+const REPO_PAGES = 'grant-pages';
+const OVERRIDES_EDIT_URL = `https://github.com/${REPO_OWNER}/${REPO_PAGES}/edit/main/data/overrides.json`;
+const OVERRIDES_NEW_URL = `https://github.com/${REPO_OWNER}/${REPO_PAGES}/new/main/data/overrides.json`;
+
+const LS_HIDDEN_KEY = 'grantbot_hidden_self';
 
 const CAT_CLASS = {
   '国・省庁': 'cat-national',
@@ -144,17 +251,58 @@ const CAT_CLASS = {
   '海外': 'cat-overseas',
 };
 
+const EDITABLE_FIELDS = [
+  { key: 'name', label: '助成金名', type: 'text' },
+  { key: 'organization', label: '助成団体', type: 'text' },
+  { key: 'organization_category', label: '団体区分', type: 'select', options: ['国・省庁','地方自治体','民間','海外'] },
+  { key: 'keywords', label: 'キーワード (カンマ区切り)', type: 'text' },
+  { key: 'amount', label: '金額', type: 'text' },
+  { key: 'duration', label: '助成期間', type: 'text' },
+  { key: 'deadline', label: '締切日 (YYYY-MM-DD)', type: 'text' },
+  { key: 'url', label: 'URL', type: 'text' },
+  { key: 'opportunity_type', label: 'タイプ', type: 'select', options: ['grant','challenge','award','pitch','accelerator','certification'] },
+  { key: 'eligibility_summary', label: '応募条件サマリ', type: 'textarea' },
+  { key: 'notes', label: '備考', type: 'textarea' },
+];
+
+function getHiddenSelf() {
+  try { return JSON.parse(localStorage.getItem(LS_HIDDEN_KEY) || '[]'); }
+  catch { return []; }
+}
+function setHiddenSelf(ids) {
+  localStorage.setItem(LS_HIDDEN_KEY, JSON.stringify(ids));
+}
+
 async function init() {
   try {
-    const res = await fetch('data/grants.json');
-    const data = await res.json();
-    grants = data.grants || [];
+    const [grantsRes, overRes] = await Promise.all([
+      fetch('data/grants.json'),
+      fetch('data/overrides.json').catch(() => null),
+    ]);
+    const data = await grantsRes.json();
+    rawGrants = data.grants || [];
+
+    if (overRes && overRes.ok) {
+      try { overrides = await overRes.json(); } catch { overrides = {}; }
+    }
+
+    allGrants = mergeOverrides(rawGrants, overrides);
+
     const d = data.date || '不明';
-    document.getElementById('meta').textContent = `最終更新: ${d} / ${grants.length}件`;
+    const ovCount = Object.keys(overrides).length;
+    document.getElementById('meta').textContent = `最終更新: ${d} / ${rawGrants.length}件${ovCount ? ` / 修正 ${ovCount}件` : ''}`;
     render();
   } catch (e) {
-    document.getElementById('meta').textContent = 'データの読み込みに失敗しました';
+    document.getElementById('meta').textContent = 'データの読み込みに失敗しました: ' + e.message;
   }
+}
+
+function mergeOverrides(grants, ov) {
+  return grants.map(g => {
+    const patch = ov[g.id];
+    if (!patch) return { ...g, _overridden: false };
+    return { ...g, ...patch, _overridden: true, _override_fields: Object.keys(patch) };
+  });
 }
 
 function getFiltered() {
@@ -163,8 +311,11 @@ function getFiltered() {
   const dlDays = document.getElementById('filterDeadline').value;
   const search = document.getElementById('searchText').value.toLowerCase();
   const now = new Date(); now.setHours(0,0,0,0);
+  const hiddenSelf = getHiddenSelf();
 
-  return grants.filter(g => {
+  return allGrants.filter(g => {
+    if (g.hidden === true) return false;           // 全員非表示
+    if (hiddenSelf.includes(g.id)) return false;   // 自分だけ非表示
     if (cat && g.organization_category !== cat) return false;
     if (type && g.opportunity_type !== type) return false;
     if (dlDays) {
@@ -228,8 +379,17 @@ function render() {
   const statsStr = Object.entries(cats).map(([k,v]) => `${k}: ${v}`).join(' / ');
   document.getElementById('stats').textContent = `表示: ${filtered.length}件 (${statsStr})`;
 
+  // hidden panel
+  const hiddenSelf = getHiddenSelf();
+  const hiddenPanel = document.getElementById('hiddenPanel');
+  if (hiddenSelf.length > 0) {
+    hiddenPanel.innerHTML = `<span>自分だけ非表示: ${hiddenSelf.length}件</span> <button class="btn-sm" onclick="restoreHiddenSelf()">全て表示に戻す</button>`;
+  } else {
+    hiddenPanel.innerHTML = '';
+  }
+
   if (filtered.length === 0) {
-    tbody.innerHTML = '<tr><td colspan="7" style="text-align:center;padding:40px;color:#999;">該当する助成金がありません</td></tr>';
+    tbody.innerHTML = '<tr><td colspan="8" style="text-align:center;padding:40px;color:#999;">該当する助成金がありません</td></tr>';
     return;
   }
 
@@ -238,14 +398,21 @@ function render() {
     const dlCls = deadlineClass(g.deadline);
     const dlDisplay = g.deadline && /^\d{4}-\d{2}-\d{2}/.test(g.deadline) ? g.deadline : (g.deadline || '要確認');
     const urlDisplay = g.url ? `<a href="${escHtml(g.url)}" target="_blank" rel="noopener">Link</a>` : '';
-    return `<tr>
-      <td class="name-cell">${escHtml(g.name)}</td>
+    const ovMark = g._overridden ? '<span class="override-mark" title="修正済み">✎</span>' : '';
+    const rowClass = g._overridden ? 'has-override' : '';
+    return `<tr class="${rowClass}" data-id="${escHtml(g.id)}">
+      <td class="name-cell">${escHtml(g.name)}${ovMark}</td>
       <td class="org-cell">${escHtml(g.organization)}</td>
       <td><span class="cat-badge ${catCls}">${escHtml(g.organization_category || '')}</span></td>
       <td class="amount-cell">${escHtml(g.amount)}</td>
       <td class="${dlCls}">${escHtml(dlDisplay)}</td>
       <td class="summary-cell">${escHtml(g.eligibility_summary)}</td>
       <td>${urlDisplay}</td>
+      <td class="actions-cell">
+        <button class="btn-sm" title="修正" onclick="openEdit('${escHtml(g.id)}')">✏️</button>
+        <button class="btn-sm" title="非表示" onclick="openHide('${escHtml(g.id)}')">👁</button>
+        <button class="btn-sm btn-danger" title="Slackで報告" onclick="openReport('${escHtml(g.id)}')">🚩</button>
+      </td>
     </tr>`;
   }).join('');
 }
@@ -294,8 +461,205 @@ function downloadCSV() {
   a.click();
 }
 
+// ── Modal helpers ──
+function openModal(id) { document.getElementById(id).classList.add('open'); }
+function closeModal(id) { document.getElementById(id).classList.remove('open'); }
+
+// ── Edit ──
+function openEdit(id) {
+  const g = allGrants.find(x => x.id === id);
+  if (!g) return;
+  currentEditGrant = g;
+  const body = document.getElementById('editModalBody');
+  body.innerHTML = `
+    <div class="info-box">
+      <strong>ID:</strong> <code>${escHtml(g.id)}</code><br>
+      変更したフィールドだけが <code>overrides.json</code> に保存されます。
+    </div>
+  ` + EDITABLE_FIELDS.map(f => {
+    const val = g[f.key] || '';
+    if (f.type === 'textarea') {
+      return `<div class="form-row"><label>${f.label}</label><textarea data-key="${f.key}">${escHtml(val)}</textarea></div>`;
+    } else if (f.type === 'select') {
+      const opts = f.options.map(o => `<option value="${escHtml(o)}" ${o === val ? 'selected':''}>${escHtml(o)}</option>`).join('');
+      return `<div class="form-row"><label>${f.label}</label><select data-key="${f.key}"><option value="">(未設定)</option>${opts}</select></div>`;
+    }
+    return `<div class="form-row"><label>${f.label}</label><input type="text" data-key="${f.key}" value="${escHtml(val)}"></div>`;
+  }).join('');
+  openModal('editModal');
+}
+
+function submitEdit() {
+  if (!currentEditGrant) return;
+  const g = currentEditGrant;
+  const rawG = rawGrants.find(x => x.id === g.id);
+  const existingOverride = overrides[g.id] || {};
+  const newOverride = {};
+
+  // Collect changed fields
+  document.querySelectorAll('#editModalBody [data-key]').forEach(el => {
+    const key = el.dataset.key;
+    const newVal = el.value;
+    const rawVal = rawG ? (rawG[key] || '') : '';
+    // If new value differs from original (grants.json), include in override
+    if (newVal !== rawVal) {
+      newOverride[key] = newVal;
+    }
+  });
+
+  // Preserve hidden:true if already in override
+  if (existingOverride.hidden === true) newOverride.hidden = true;
+
+  if (Object.keys(newOverride).length === 0) {
+    alert('変更がありません');
+    return;
+  }
+
+  const snippet = formatOverrideSnippet(g.id, newOverride);
+  pendingOverride = { id: g.id, override: newOverride };
+
+  closeModal('editModal');
+  showInstructions('修正', snippet, Object.keys(overrides).length === 0);
+}
+
+// ── Hide ──
+function openHide(id) {
+  const g = allGrants.find(x => x.id === id);
+  if (!g) return;
+  currentHideGrant = g;
+  document.getElementById('hideModalBody').innerHTML = `
+    <div class="info-box">
+      <strong>${escHtml(g.name)}</strong><br>
+      <span style="font-size:12px;color:#666;">${escHtml(g.organization)}</span>
+    </div>
+    <p style="font-size:13px;">この助成金を非表示にする方法を選択してください:</p>
+    <ul style="font-size:13px; padding-left: 20px; margin-top: 8px;">
+      <li><strong>自分だけ非表示</strong>: ブラウザに保存され、あなたの画面からのみ消えます（即座に反映）</li>
+      <li><strong>全員から非表示</strong>: overrides.json を更新し、全員の画面から消えます（GitHub 編集が必要）</li>
+    </ul>
+  `;
+  openModal('hideModal');
+}
+
+function hideSelf() {
+  if (!currentHideGrant) return;
+  const list = getHiddenSelf();
+  if (!list.includes(currentHideGrant.id)) {
+    list.push(currentHideGrant.id);
+    setHiddenSelf(list);
+  }
+  closeModal('hideModal');
+  render();
+}
+
+function hideAll() {
+  if (!currentHideGrant) return;
+  const g = currentHideGrant;
+  const existingOverride = overrides[g.id] || {};
+  const newOverride = { ...existingOverride, hidden: true };
+  const snippet = formatOverrideSnippet(g.id, newOverride);
+  pendingOverride = { id: g.id, override: newOverride };
+  closeModal('hideModal');
+  showInstructions('非表示', snippet, Object.keys(overrides).length === 0);
+}
+
+function restoreHiddenSelf() {
+  if (!confirm('自分だけ非表示にしていた行を全て表示に戻しますか？')) return;
+  setHiddenSelf([]);
+  render();
+}
+
+// ── Report (Slack) ──
+function openReport(id) {
+  const g = allGrants.find(x => x.id === id);
+  if (!g) return;
+  currentReportGrant = g;
+  document.getElementById('reportModalBody').innerHTML = `
+    <div class="info-box">
+      <strong>${escHtml(g.name)}</strong><br>
+      <span style="font-size:12px;color:#666;">${escHtml(g.organization)} / ${escHtml(g.id)}</span>
+    </div>
+    <div class="form-row">
+      <label>フィードバックの種類</label>
+      <select id="reportType">
+        <option value="exclude">除外してほしい（この助成金は対象外）</option>
+        <option value="correct">情報が間違っている</option>
+        <option value="rule">検索ルールへの提案（似た助成金も除外など）</option>
+        <option value="other">その他</option>
+      </select>
+    </div>
+    <div class="form-row">
+      <label>コメント（理由・詳細・修正内容など）</label>
+      <textarea id="reportComment" placeholder="例: 応募主体が個人限定で企業は不可 / 締切は実際は 2026-05-20 / この団体の他の助成金も全て除外したい"></textarea>
+    </div>
+  `;
+  openModal('reportModal');
+}
+
+function copyReport() {
+  if (!currentReportGrant) return;
+  const g = currentReportGrant;
+  const type = document.getElementById('reportType').value;
+  const comment = document.getElementById('reportComment').value.trim();
+  const typeLabels = { exclude:'除外希望', correct:'情報修正', rule:'ルール提案', other:'その他' };
+
+  const text = `🚩 Grant Feedback
+ID: ${g.id}
+Name: ${g.name}
+Type: ${typeLabels[type] || type}
+Comment: ${comment || '(なし)'}`;
+
+  navigator.clipboard.writeText(text).then(() => {
+    closeModal('reportModal');
+    document.getElementById('instructModalBody').innerHTML = `
+      <div class="info-box">
+        ✓ Slack投稿文をクリップボードにコピーしました。
+      </div>
+      <p style="font-size:13px;">Slackの通知チャンネルを開いて、メッセージを貼り付けて送信してください。</p>
+      <p style="font-size:13px;margin-top:8px;">次回の定期検索（毎週日曜）でフィードバックが反映されます。</p>
+      <pre style="background:#f5f5f5;padding:10px;border-radius:4px;font-size:12px;margin-top:10px;">${escHtml(text)}</pre>
+    `;
+    openModal('instructModal');
+  }).catch(err => {
+    alert('クリップボードへのコピーに失敗しました: ' + err.message);
+  });
+}
+
+// ── Override snippet ──
+function formatOverrideSnippet(id, override) {
+  return `  "${id}": ${JSON.stringify(override, null, 2).replace(/\n/g, '\n  ')}`;
+}
+
+function showInstructions(action, snippet, isFirstOverride) {
+  const fullSnippet = snippet;
+  navigator.clipboard.writeText(fullSnippet).then(() => {
+    const editUrl = isFirstOverride ? OVERRIDES_NEW_URL : OVERRIDES_EDIT_URL;
+    document.getElementById('instructModalBody').innerHTML = `
+      <div class="info-box">
+        ✓ 以下の内容をクリップボードにコピーしました。
+      </div>
+      <p style="font-size:13px;"><strong>GitHub での反映手順:</strong></p>
+      <ol style="font-size:13px; padding-left: 20px;">
+        <li><a href="${editUrl}" target="_blank" rel="noopener">overrides.json を編集</a> を開く${isFirstOverride ? '（初回は新規作成）' : ''}</li>
+        <li>既存の JSON の <code>}</code> の直前に以下を貼り付け（先頭に <code>,</code> を付けることを忘れずに）${isFirstOverride ? ' または全体を <code>{ &lt;paste&gt; }</code> で囲む' : ''}</li>
+        <li>"Commit changes" をクリック</li>
+        <li>30秒〜1分後に <a href="${location.origin}${location.pathname}" target="_blank">このページ</a> をリロードで反映</li>
+      </ol>
+      <pre>${escHtml(snippet)}</pre>
+      <p style="font-size:12px;color:#666;margin-top:10px;">
+        ※ JSON 構文エラーに注意: 既存エントリの末尾にカンマが必要です。
+      </p>
+      <p style="margin-top:12px;">
+        <a href="${editUrl}" target="_blank" rel="noopener" class="btn btn-accent">GitHub で編集を開く</a>
+      </p>
+    `;
+    openModal('instructModal');
+  }).catch(err => {
+    alert('クリップボードへのコピーに失敗しました: ' + err.message);
+  });
+}
+
 init();
 </script>
 </body>
 </html>
-<!-- updated -->
