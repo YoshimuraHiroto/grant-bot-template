@@ -258,11 +258,46 @@ Slack フィードバックの処理履歴。
 
 ## 利用可能なスクリプト
 
-### scripts/postprocess.py
-期限切れ分離・ID正規化・フォーマット統一。
+### scripts/curate.py（キュレーションの主体）
+検索エージェントが集めた生の統合 JSON を機械的に処理し、3分類する:
+
+- **CONFIRMED_KEEP**: 全ゲート通過、情報充分 → `docs/data/grants_partial.json` に出力
+- **CONFIRMED_REMOVE**: 確実に除外（期限切れ・明白な重複）
+- **NEEDS_VERIFY**: 正規化失敗や情報不足だが回復可能性あり → LLM が WebSearch で検証
+
+```bash
+python scripts/curate.py <input.json> \
+  --output-partial docs/data/grants_partial.json \
+  --report docs/data/curation_report.json \
+  --today YYYY-MM-DD
+```
+
+### scripts/postprocess.py（最終整形）
+LLM の検証完了後、ID再採番・期限切れ最終チェック・フォーマット統一。
 ```bash
 python scripts/postprocess.py docs/data/grants.json
 ```
+
+## Routine の推奨ワークフロー（タイムアウト対策）
+
+LLM の Extended Thinking 時間を最小化するため、**機械的判定は Python、意味判定のみ LLM** で分担:
+
+1. **並列検索**（LLM, Agent ツール）: 5エージェントで生データ収集 → `combined.json` に統合
+2. **curate.py 実行**（Python, 数秒）: ゲート2/3/4/5/6を一括適用
+   - 出力: `grants_partial.json`（確定キープ）+ `curation_report.json`（除外ログ + 要検証リスト）
+3. **検証ループ**（LLM, WebSearch）: `curation_report.json` の `needs_verify` を読み、各項目について:
+   - `verify_hints` を参考に WebSearch/WebFetch で公式情報を確認
+   - 正規化失敗の場合: パース不能だった表現から実際の締切を取り出す
+   - 曖昧金額の場合: 公募要領で具体額を確認
+   - 情報不足の場合: 公募要領 PDF で補完
+   - 基準を満たしたら `grants_partial.json` の grants 配列に追記
+   - 満たさなければ除外ログに追加
+4. **postprocess.py 実行**（Python）: ID再採番、最終整形
+5. **Git コミット・プッシュ**
+6. **Slack 通知**
+
+この分担により、LLM は 10〜30件程度の verify 処理のみを担当し、
+ストリームのアイドルタイム（idle timeout 原因）を大幅に削減できる。
 
 ## デプロイフロー
 1. docs/data/grants.json を更新
