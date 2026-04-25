@@ -40,6 +40,23 @@ Pages 配信用のリポジトリ（`<your-bot>-pages`）は Public で問題あ
 - Claude Code Desktop (Slack 連携設定済み)
 - Slack ワークスペース (通知用、任意)
 
+### Python 環境について
+
+本テンプレートに含まれる Python スクリプト（`scripts/curate.py`, `scripts/postprocess.py`）は **標準ライブラリのみで動作**するため、追加パッケージのインストールや仮想環境の構築は不要です。
+
+- 必要な Python バージョン: **3.9 以上**（標準で macOS/Linux にプリインストール、Windows は [python.org](https://www.python.org/) から入手）
+- 使用している標準ライブラリ: `argparse`, `json`, `re`, `datetime`, `difflib`, `pathlib`, `urllib.parse`, `unicodedata` など
+- pip install 不要、`requirements.txt` も不要
+
+ローカルで動作確認したい場合:
+
+```bash
+python3 scripts/curate.py /path/to/input.json
+python3 scripts/postprocess.py docs/data/grants.json
+```
+
+Cloud Routine 実行時も Claude Code 環境の標準 Python が使われ、ユーザーのローカル環境を汚染することはありません。
+
 ---
 
 ## Step 1: 2つの GitHub リポジトリを作成
