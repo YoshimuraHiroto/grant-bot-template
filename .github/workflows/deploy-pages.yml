@@ -1,4 +1,7 @@
 name: Deploy to Pages
+# SETUP.md の Step 3 / Step 4 を参照:
+# - secrets.PAGES_DEPLOY_TOKEN を Repository secrets に登録（Pages リポジトリへの write 権限を持つ Fine-grained PAT）
+# - 下記の <YOUR_GITHUB_USERNAME> と <YOUR_PAGES_REPO_NAME> をあなたの GitHub ユーザー名・Pages リポジトリ名に置換
 on:
   push:
     paths: ['docs/**']
@@ -9,12 +12,12 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Push docs to grant-pages
+      - name: Push docs to Pages repo
         run: |
           cd docs
           git init -b main
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add -A
-          git commit -m "Deploy from grant-bot $(date -u +%Y-%m-%dT%H:%M:%SZ)"
-          git push --force https://x-access-token:${{ secrets.PAGES_DEPLOY_TOKEN }}@github.com/YoshimuraHiroto/grant-pages.git main
+          git commit -m "Deploy from main $(date -u +%Y-%m-%dT%H:%M:%SZ)"
+          git push --force https://x-access-token:${{ secrets.PAGES_DEPLOY_TOKEN }}@github.com/<YOUR_GITHUB_USERNAME>/<YOUR_PAGES_REPO_NAME>.git main

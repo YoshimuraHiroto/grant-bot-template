@@ -1,51 +1,20 @@
 {
+  "description": "ユーザーフィードバックから抽出した除外/包含/品質ルール。Routineが Slack 投稿を解析して自動更新。手動で初期ルールを書いても良い。",
   "search_preferences": [],
   "exclusion_rules": [
     {
-      "id": "ex_0001",
-      "rule": "個人向けの奨学金や留学助成は除外する",
+      "id": "ex_template_01",
+      "rule": "（例）個人向けの奨学金や留学助成は除外する",
       "confidence": 0.9,
       "source_fb_ids": [],
-      "created": "2026-03-10",
-      "updated": "2026-03-10"
-    },
-    {
-      "id": "ex_0002",
-      "rule": "大学・研究機関限定の助成金（科研費等）は除外する",
-      "confidence": 0.9,
-      "source_fb_ids": [],
-      "created": "2026-03-10",
-      "updated": "2026-03-10"
-    },
-    {
-      "id": "ex_0003",
-      "rule": "宇宙関連の助成金であっても、地球観測衛星データの解析・利活用（SAR/InSAR、リモートセンシング、衛星データプラットフォーム等）をテーマに応募可能なもののみ対象とする。衛星通信（通信衛星、光通信、5G/Beyond 5G通信インフラ等）、衛星打ち上げ（ロケット開発、射場整備、輸送等）、衛星本体製造（コンステレーション構築、衛星コンポーネント開発等）に特化したテーマは除外する。複数テーマを含む助成金（JAXA宇宙戦略基金等）は、EO/データ利活用テーマで応募可能なら残し、notesにその旨明記する。",
-      "confidence": 0.9,
-      "source_fb_ids": [
-        "fb_0002",
-        "fb_2026-04-17_user"
-      ],
-      "created": "2026-03-19",
-      "updated": "2026-04-17"
+      "created": "YYYY-MM-DD",
+      "updated": "YYYY-MM-DD",
+      "_comment": "応募主体が企業（株式会社等）なら、このルールは初期から有効にしておくと良い。不要なら削除。"
     }
   ],
-  "quality_preferences": [
-    {
-      "id": "qp_0001",
-      "rule": "金額欄には助成金額の数値情報（例：上限500万円、100〜1000万円）のみを記載する。応募条件・対象要件・事業内容などの金額に関係しない情報は金額欄に含めないこと。金額が不明な場合は「不明」または空欄とする。",
-      "confidence": 0.35,
-      "source_fb_ids": [
-        "fb_0001"
-      ],
-      "created": "2026-03-15",
-      "updated": "2026-03-15"
-    }
-  ],
+  "quality_preferences": [],
   "meta": {
-    "last_generalization_run": "2026-04-17",
-    "processed_fb_ids": [
-      "fb_0001",
-      "fb_0002"
-    ]
+    "last_generalization_run": null,
+    "processed_fb_ids": []
   }
 }
