@@ -2,73 +2,73 @@
   "active_keywords": [
     {
       "keyword": "防災",
-      "hit_rate": 0.13,
+      "hit_rate": 0.1275,
       "positive_feedback_rate": 0.0,
-      "search_count": 16
+      "search_count": 17
     },
     {
       "keyword": "減災",
-      "hit_rate": 0.01,
+      "hit_rate": 0.0094,
       "positive_feedback_rate": 0.0,
-      "search_count": 16
+      "search_count": 17
     },
     {
       "keyword": "衛星",
-      "hit_rate": 0.125,
+      "hit_rate": 0.1249,
       "positive_feedback_rate": 0.0,
-      "search_count": 16,
+      "search_count": 17,
       "notes": "衛星通信・衛星打ち上げ関連は除外対象（ex_0003）。衛星データ利活用・リモートセンシングは対象。"
     },
     {
       "keyword": "リモートセンシング",
-      "hit_rate": 0.036,
+      "hit_rate": 0.0349,
       "positive_feedback_rate": 0.0,
-      "search_count": 16
+      "search_count": 17
     },
     {
       "keyword": "AI",
-      "hit_rate": 0.378,
+      "hit_rate": 0.3733,
       "positive_feedback_rate": 0.0,
-      "search_count": 16
+      "search_count": 17
     },
     {
       "keyword": "機械学習",
-      "hit_rate": 0.009,
+      "hit_rate": 0.0085,
       "positive_feedback_rate": 0.0,
-      "search_count": 16
+      "search_count": 17
     },
     {
       "keyword": "カーボンクレジット",
-      "hit_rate": 0.042,
+      "hit_rate": 0.0406,
       "positive_feedback_rate": 0.0,
-      "search_count": 16
+      "search_count": 17
     },
     {
       "keyword": "生物多様性",
-      "hit_rate": 0.036,
+      "hit_rate": 0.0349,
       "positive_feedback_rate": 0.0,
-      "search_count": 16
+      "search_count": 17
     },
     {
       "keyword": "ブルーカーボン",
-      "hit_rate": 0.025,
+      "hit_rate": 0.0235,
       "positive_feedback_rate": 0.0,
-      "search_count": 16
+      "search_count": 17
     },
     {
       "keyword": "宇宙",
-      "hit_rate": 0.074,
+      "hit_rate": 0.0748,
       "positive_feedback_rate": 0.0,
-      "search_count": 16
+      "search_count": 17
     },
     {
       "keyword": "水資源",
       "hit_rate": 0.0,
       "positive_feedback_rate": 0.0,
-      "search_count": 16
+      "search_count": 17
     }
   ],
   "suggested_keywords": [],
   "retired_keywords": [],
-  "last_updated": "2026-04-14"
+  "last_updated": "2026-04-25"
 }

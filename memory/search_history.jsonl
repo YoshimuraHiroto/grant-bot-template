@@ -21,3 +21,4 @@
 {"date": "2026-04-12", "grants_found": 119, "grants_new": 119, "grants_updated": 0, "themes": {}}
 {"date": "2026-04-14", "grants_found": 97, "grants_new": 32, "grants_updated": 65, "themes": {"衛星": 15, "AI": 56, "防災": 12, "脱炭素": 15}}
 {"date": "2026-04-16", "grants_found": 128, "grants_new": 128, "grants_updated": 0, "themes": {}}
+{"date": "2026-04-25", "grants_found": 57, "grants_new": 57, "grants_updated": 0, "themes": {"AI・データ": 23, "脱炭素・環境": 20, "その他": 4, "防災": 5, "SDGs・社会課題": 7, "グローバルサウス・国際": 5, "スタートアップ": 12, "衛星": 9}, "gates": {"input_count": 59, "confirmed_keep": 56, "confirmed_remove": 2, "needs_verify": 1, "verified_added": 1, "removal_reasons": {"duplicate_url": 2}}}
