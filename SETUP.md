@@ -17,6 +17,23 @@
 7. Slack に新着サマリ通知
 ```
 
+## ⚠️ 機密情報の取り扱いについて（必読）
+
+このシステムは以下の機密情報を扱うため、**メインのリポジトリ（`<your-bot>`）は必ず Private に設定**してください:
+
+| ファイル | 含まれる機密情報 |
+|---------|---------------|
+| `config/company_profile.json` | 会社名、事業領域、コア技術、過去採択実績、連携先大学・研究機関 |
+| `memory/feedback_log.jsonl` | Slack 経由の社内フィードバック内容 |
+| `memory/generalized_rules.json` | 学習済みの戦略的判断ルール（除外基準など） |
+| `memory/search_history.jsonl` | 検索戦略の履歴 |
+
+Pages 配信用のリポジトリ（`<your-bot>-pages`）は Public で問題ありません（公開助成金情報のみを含むため）。ただし、競合他社にどの分野の助成金を追跡しているかを推測されたくない場合は、Pages も Private 化（GitHub Pro/Team 契約が必要）を検討してください。
+
+**Personal Access Token の権限スコープも、必要最小限（`<your-bot>-pages` への Contents 書き込み権限のみ）に絞る**ことを推奨します。
+
+---
+
 ## 前提
 
 - GitHub アカウント
@@ -29,8 +46,10 @@
 
 | リポジトリ | 公開設定 | 用途 |
 |-----------|---------|------|
-| `<your-bot>` | **Private** | コード・設定・メモリ。Routine の接続先 |
+| `<your-bot>` | **Private 必須** ⚠️ | コード・設定・メモリ。Routine の接続先 |
 | `<your-bot>-pages` | **Public** | GitHub Pages 配信用 (HTML + grants.json のみ) |
+
+> 上記「機密情報の取り扱いについて」を参照し、メインリポジトリは **必ず Private** で作成してください。誤って Public で作成した場合、過去の commit に企業情報が残り続けるため、削除して作り直す必要があります。
 
 例: `grant-bot` (Private) + `grant-pages` (Public)
 

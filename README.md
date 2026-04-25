@@ -6,6 +6,16 @@ Claude Code Desktop の Routine 機能を使ってクラウド実行されるた
 
 > 📖 セットアップ手順は [**SETUP.md**](./SETUP.md) を参照してください（8ステップ、所要 30〜60分）。
 
+> ⚠️ **重要 — 機密情報の取り扱い**
+>
+> このテンプレートを使って構築する **メインのリポジトリ（`<your-bot>`）は必ず Private** に設定してください。以下の機密情報を含みます:
+> - `config/company_profile.json`: 会社名・事業領域・コア技術・過去採択実績・連携先
+> - `memory/feedback_log.jsonl`: 社内フィードバックの内容
+> - `memory/generalized_rules.json`: 学習済みの戦略的判断ルール
+> - `memory/search_history.jsonl`: 検索戦略の履歴
+>
+> Pages 配信用のリポジトリ（`<your-bot>-pages`）は Public で構いません（公開助成金情報のみ）が、競合に検索戦略を推測されたくない場合は別途検討してください。
+
 ---
 
 ## 主な機能
