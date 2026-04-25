@@ -45,11 +45,12 @@ gh repo create <YOUR_USERNAME>/<your-bot>-pages --public
 ## Step 2: テンプレートを clone
 
 ```bash
-git clone -b template https://github.com/<original-repo-owner>/grant-bot.git my-bot
+git clone https://github.com/YoshimuraHiroto/grant-bot-template.git my-bot
 cd my-bot
 git remote set-url origin https://github.com/<YOUR_USERNAME>/<your-bot>.git
-git checkout -b main
 ```
+
+`my-bot` の部分は任意のディレクトリ名で構いません。clone 後、リモート URL を自分のリポジトリ（Step 1 で作成した Private リポジトリ）に切り替えます。
 
 ---
 
